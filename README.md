@@ -2,7 +2,7 @@
 were saving the planet yall
 
 # Notes on files:
-- run the website from index.html
+- run the website from index.html (this is automatically done on github, but if you're running it from personal ide, make sure to do this)
 - css files customize the html; when importing files on your end, make sure you import the css files in the css folder and the js files in the js folder
 - all animations + back-end go in the js file
 
