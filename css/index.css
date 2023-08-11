@@ -21,19 +21,19 @@ body {
     margin: 0;
 }
 
-#bar, #progress {
+#bar {
     width: 500px;
     height: 10px;
     margin: auto;
-}
-
-#bar {
     background-color: grey;
     border: 2px solid var(--white);
     border-radius: 3px;
 }
 
 #progress {
+    width: 1px;
+    height: 10px;
+    margin: 0%;
     background-color: var(--darkred);
 }
 
