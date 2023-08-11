@@ -17,12 +17,8 @@ class Organism {
         if (this.currentFoodCount <= this.lowFoodLimit * this.count) {
             this.hunt(ecosystem);
         }
-
-        if (this.name === "Grass" || this.name === "Weed") {
-            this.reproduce();
-        } else {
-            this.reproduce();
-        }
+        
+        this.reproduce();
 
         this.count = Math.max(0, this.count);
 
@@ -90,7 +86,7 @@ const events = [
         effect: (ecosystem) => {
             let rabbit = ecosystem.find(org => org.name === "Rabbit");
             if (rabbit) {
-                rabbit.originalHuntProb = rabbit.huntProb;
+                rabbit.originalHuntProb = rabbit.originalHuntProb || rabbit.huntProb;
                 rabbit.huntProb *= 0.7;
             }
         },
@@ -98,15 +94,31 @@ const events = [
             let rabbit = ecosystem.find(org => org.name === "Rabbit");
             if (rabbit && rabbit.originalHuntProb) {
                 rabbit.huntProb = rabbit.originalHuntProb;
+                delete rabbit.originalHuntProb;
             }
         },
         message: "A drought has occurred! Droughts severely affect the availability of water, which impacts both plants and animals. Without enough water, plants may not grow as fast or even die, leading to a decrease in food availability for herbivores like rabbits. As you'll see, this can cascade and impact predators like foxes too."
     },
-    // ... other events ...
+    {
+        name: "Disease Outbreak",
+        duration: 2,  // Lasts for 2 days
+        effect: (ecosystem) => {
+            let affectedOrganism = ecosystem[Math.floor(Math.random() * ecosystem.length)];
+            const affectedCount = Math.floor(affectedOrganism.count * 0.4);  // 40% gets affected
+            affectedOrganism.count -= affectedCount;
+            alert(`Disease has affected the ${affectedOrganism.name}s! ${affectedCount} have died.`);
+        },
+        endEffect: (ecosystem) => {
+            alert("The disease outbreak has ended.");
+        },
+        message: "A disease outbreak has occurred! Diseases can drastically reduce the population of affected species."
+    }
 ];
 
 let currentEvent = null;
 let daysRemaining = 0;
+let landUsage = 0;
+
 function ecosystemIntroduction() {
     alert("Welcome to the ecosystem simulation! In this virtual environment, we'll observe the interactions between rabbits, foxes, grass, and weeds. Let's see how they co-exist and influence each other's populations.");
 }
@@ -150,8 +162,42 @@ let history = {
     Grass: [],
     Weed: []
 };
-
 let chart;
+let currentSeason = "Spring";
+
+function changeSeason() {
+    const seasons = ["Spring", "Summer", "Fall", "Winter"];
+    const idx = (seasons.indexOf(currentSeason) + 1) % seasons.length;
+    currentSeason = seasons[idx];
+
+    // Adjusting reproduction rates based on seasons
+    ecosystem.forEach(org => {
+        if (org.name === "Grass" || org.name === "Weed") {
+            switch(currentSeason) {
+                case "Spring":
+                    org.matingProb *= 1.2; // Increase by 20% in Spring
+                    break;
+                case "Summer":
+                    org.matingProb *= 1.05; // Slight increase in Summer
+                    break;
+                case "Fall":
+                    org.matingProb *= 0.95; // Slight decrease in Fall
+                    break;
+                case "Winter":
+                    org.matingProb *= 0.7; // Decrease by 30% in Winter
+                    break;
+            }
+        }
+    });
+
+    alert(`Season has changed to ${currentSeason}`);
+}
+
+function checkSeasonChange() {
+    if (dayCount % 6 === 0) {
+        changeSeason();
+    }
+}
 
 function simulateDay(ecosystem) {
     // Reset land usage every day
@@ -178,6 +224,7 @@ function simulateDay(ecosystem) {
         const org = ecosystem.find(o => o.name === animal);
         checkSignificantChange(org, prevCounts[animal]);
     });
+    checkSeasonChange();
 }
 
 
@@ -265,6 +312,7 @@ function runSimulationDayByDay() {
         alert(`The food chain is broken on day ${dayCount}!`);
     }
 }
+
 
 initializeGraph();
 ecosystemIntroduction();
