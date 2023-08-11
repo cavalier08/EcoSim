@@ -15,4 +15,8 @@ function move() {
       }
     }
   }
+  const sleep = setTimeout(openWeb, 1000);
+}
+function openWeb(){
+  window.location.href="pick-animal.html"
 }
