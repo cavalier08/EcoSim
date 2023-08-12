@@ -81,26 +81,24 @@ function generateOrganismHTML(organism) {
 }
 
 const organismsData = [
-    [
-        { name: "Rabbit", args: [1, 150, 300, 2, 1, ["Grass", "Weed"], 1.5] },
-        { name: "Fox", args: [0.2, 20, 60, 4, 0.3, ["Rabbit"], 20] },
-        { name: "Deer", args: [0.6, 140, 270, 3, 0.5, ["Grass"], 2.5] },
-        { name: "Coyote", args: [0.25, 20, 40, 3, 0.2, ["Rabbit", "Deer"], 15] },
-        { name: "Bobcat", args: [0.2, 15, 35, 3, 0.3, ["Rabbit"], 20] },
-        { name: "Sparrow", args: [0.2, 15, 60, 0.7, 0.5, ["Grasshopper", "Wildflower"], 2] },
-        { name: "Hawk", args: [0.3, 10, 25, 2, 0.25, ["Sparrow", "Rabbit"], 12] },
-        { name: "Grass", args: [0, 0, 4500, 0.3, 0.7, [], 0] },
-        { name: "Wildflower", args: [0, 0, 200, 0.2, 0.85, [], 0] },
-        { name: "Shrub", args: [0, 0, 350, 0.4, 0.45, [], 0] },
-        { name: "Tree", args: [0, 0, 1100, 1.7, 0.3, [], 0] },
-        { name: "Weed", args: [0, 0, 1200, 0.3, 0.7, [], 0] },
-        { name: "Butterfly", args: [0.7, 0, 60, 0.06, 0.75, ["Wildflower"], 0] },
-        { name: "Beetle", args: [0.7, 0, 50, 0.1, 0.55, ["Shrub", "Weed"], 0] },
-        { name: "Grasshopper", args: [0.7, 0, 40, 0.08, 0.65, ["Grass", "Weed"], 0] },
-        { name: "Ant", args: [0.15, 0, 25, 0.04, 0.65, ["Tree","Grass"], 0] },
-        { name: "Human", args: [0.7, 15, 25, 3, 0.3, ["Rabbit","Deer", "Sparrow", "Grass", "Wildflower", "Tree", "Shrub"], 0]}
-    ]    
-];
+        { name: "Rabbit", args: [0.75, 100, 200, 1, 0.8, ["Grass", "Weed"], 1] },
+        { name: "Fox", args: [0.25, 10, 50, 3, 0.4, ["Rabbit"], 30] },
+        { name: "Deer", args: [0.5, 120, 250, 2, 0.6, ["Grass"], 2] },
+        { name: "Coyote", args: [0.3, 15, 30, 2.5, 0.3, ["Rabbit", "Deer"], 20] },
+        { name: "Bobcat", args: [0.25, 12, 30, 2.2, 0.35, ["Rabbit"], 25] },
+        { name: "Sparrow", args: [0.25, 10, 50, 0.5, 0.6, ["Grasshopper", "Wildflower"], 1] },
+        { name: "Hawk", args: [0.35, 5, 20, 1.5, 0.3, ["Sparrow", "Rabbit"], 10] },
+        { name: "Grass", args: [0, 0, 4000, 0.2, 0.6, [], 0] },
+        { name: "Wildflower", args: [0, 0, 150, 0.15, 0.8, [], 0] },
+        { name: "Shrub", args: [0, 0, 300, 0.3, 0.4, [], 0] },
+        { name: "Tree", args: [0, 0, 1000, 1.5, 0.2, [], 0] },
+        { name: "Weed", args: [0, 0, 1000, 0.2, 0.65, [], 0] },
+        { name: "Butterfly", args: [0.8, 0, 50, 0.05, 0.7, ["Wildflower"], 0] },
+        { name: "Beetle", args: [0.8, 0, 40, 0.08, 0.5, ["Shrub", "Weed"], 0] },
+        { name: "Grasshopper", args: [0.8, 0, 30, 0.06, 0.6, ["Grass", "Weed"], 0] },
+        { name: "Ant", args: [0.2, 0, 20, 0.03, 0.6, ["Tree","Grass"], 0] },
+        { name: "Human", args: [0.8, 10, 20, 2, 0.5, ["Rabbit","Deer", "Sparrow", "Grass", "Wildflower", "Tree", "Shrub"],0]},
+    ];
 
 const ecosystem = [];
 const history = {};
@@ -111,10 +109,8 @@ const initialCounts = {};
 // Read and store initial counts from session storage
 organismsData.forEach(orgData => {
     const count = sessionStorage.getItem(`${orgData.name}Count`);
-    initialCounts[orgData.name] = isNaN(count) || count < 0 ? 0 : parseInt(count);
+initialCounts[orgData.name] = (count === null || isNaN(count) || count < 0) ? 0 : parseInt(count);
 });
-
-// ...
 
 // Modify the getInitialCount function to use the initialCounts array
 function getInitialCount(organismName) {
