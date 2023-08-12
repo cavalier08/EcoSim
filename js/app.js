@@ -17,7 +17,7 @@ class Organism {
         if (this.currentFoodCount <= this.lowFoodLimit * this.count) {
             this.hunt(ecosystem);
         }
-        
+
         this.reproduce();
 
         this.count = Math.max(0, this.count);
@@ -30,33 +30,29 @@ class Organism {
 
     set setHuntProb(value) {
         this.huntProb = value;
-    }    
+    }
     hunt(ecosystem) {
         let potentialFood = ecosystem.filter(org => this.foodSource.includes(org.name));
-        const MAX_HUNT_ATTEMPTS = 5;  // limit to the number of hunting attempts
-    
+        const MAX_HUNT_ATTEMPTS = 2;  // limit to the number of hunting attempts
+
         for (let food of potentialFood) {
             let attempts = 0;
-    
             while (this.currentFoodCount <= this.lowFoodLimit * this.count && food.count > 0 && attempts < MAX_HUNT_ATTEMPTS) {
                 if (Math.random() < this.huntProb) {
                     this.currentFoodCount += this.foodAvailable;
                     food.count--;
                 }
-    
                 attempts++;
             }
         }
     }
-    
-    
-    
+
     reproduce() {
         const freeLand = MAX_LAND_CAPACITY - landUsage;
         const reproductionPotential = Math.floor(this.count * this.matingProb);
         const actualReproduction = Math.min(reproductionPotential, freeLand);
 
-        if (this.name !== "Grass" && this.name !== "Weed" && this.currentFoodCount < this.foodUsage * this.count) {
+        if (this.name !== "Grass" && this.name !== "Weed" && this.name !=="Shrub" && this.name !=="Wildflower" && this.name!=="Tree"&& this.currentFoodCount < this.foodUsage * this.count) {
             // If it's an animal and it doesn't have enough food, then reproduction does not occur
             return;
         }
@@ -68,16 +64,15 @@ class Organism {
 
 const MAX_LAND_CAPACITY = 5000;
 
-
 function generateOrganismHTML(organism) {
     const div = document.createElement('div');
     div.classList.add('organism');
     div.id = organism.name;
-    
+
     const h3 = document.createElement('h3');
     h3.innerText = organism.name;
     div.appendChild(h3);
-    
+
     const p = document.createElement('p');
     p.innerHTML = `Count: <span id="${organism.name}-count">${organism.count}</span>`;
     div.appendChild(p);
@@ -86,26 +81,25 @@ function generateOrganismHTML(organism) {
 }
 
 const organismsData = [
-    { name: "Rabbit", args: [0.45, 100, 200, 1, 0.5, ["Grass", "Weed"], 1] },
-    { name: "Fox", args: [0.35, 10, 50, 3, 0.4, ["Rabbit"], 30] },
-    { name: "Deer", args: [0.4, 120, 250, 2, 0.6, ["Grass"], 2] },
-    { name: "Coyote", args: [0.3, 15, 30, 2.5, 0.3, ["Rabbit", "Deer"], 20] },
-    { name: "Bobcat", args: [0.25, 12, 30, 2.2, 0.35, ["Rabbit"], 25] },
-
-    { name: "Sparrow", args: [0.25, 10, 50, 0.5, 0.6, ["Grasshopper", "Wildflower"], 1] },
-    { name: "Hawk", args: [0.35, 5, 20, 1.5, 0.3, ["Sparrow", "Rabbit"], 10] },
-
-    { name: "Grass", args: [0, 0, 4000, 0.2, 0.6, [], 0] },
-    { name: "Wildflower", args: [0, 0, 150, 0.15, 0.8, [], 0] },
-    { name: "Shrub", args: [0, 0, 300, 0.3, 0.4, [], 0] },
-    { name: "Tree", args: [0, 0, 1000, 1.5, 0.2, [], 0] },
-    { name: "Weed", args: [0, 0, 1000, 0.2, 0.65, [], 0] },
-
-
-    { name: "Butterfly", args: [0.2, 0, 50, 0.05, 0.7, ["Wildflower"], 0] },
-    { name: "Beetle", args: [0.25, 0, 40, 0.08, 0.5, ["Shrub"], 0] },
-    { name: "Grasshopper", args: [0.3, 0, 30, 0.06, 0.6, ["Grass"], 0] },
-    { name: "Ant", args: [0.2, 0, 20, 0.03, 0.6, ["Tree"], 0] },
+    [
+        { name: "Rabbit", args: [1, 150, 300, 2, 1, ["Grass", "Weed"], 1.5] },
+        { name: "Fox", args: [0.2, 20, 60, 4, 0.3, ["Rabbit"], 20] },
+        { name: "Deer", args: [0.6, 140, 270, 3, 0.5, ["Grass"], 2.5] },
+        { name: "Coyote", args: [0.25, 20, 40, 3, 0.2, ["Rabbit", "Deer"], 15] },
+        { name: "Bobcat", args: [0.2, 15, 35, 3, 0.3, ["Rabbit"], 20] },
+        { name: "Sparrow", args: [0.2, 15, 60, 0.7, 0.5, ["Grasshopper", "Wildflower"], 2] },
+        { name: "Hawk", args: [0.3, 10, 25, 2, 0.25, ["Sparrow", "Rabbit"], 12] },
+        { name: "Grass", args: [0, 0, 4500, 0.3, 0.7, [], 0] },
+        { name: "Wildflower", args: [0, 0, 200, 0.2, 0.85, [], 0] },
+        { name: "Shrub", args: [0, 0, 350, 0.4, 0.45, [], 0] },
+        { name: "Tree", args: [0, 0, 1100, 1.7, 0.3, [], 0] },
+        { name: "Weed", args: [0, 0, 1200, 0.3, 0.7, [], 0] },
+        { name: "Butterfly", args: [0.7, 0, 60, 0.06, 0.75, ["Wildflower"], 0] },
+        { name: "Beetle", args: [0.7, 0, 50, 0.1, 0.55, ["Shrub", "Weed"], 0] },
+        { name: "Grasshopper", args: [0.7, 0, 40, 0.08, 0.65, ["Grass", "Weed"], 0] },
+        { name: "Ant", args: [0.15, 0, 25, 0.04, 0.65, ["Tree","Grass"], 0] },
+        { name: "Human", args: [0.7, 15, 25, 3, 0.3, ["Rabbit","Deer", "Sparrow", "Grass", "Wildflower", "Tree", "Shrub"], 0]}
+    ]    
 ];
 
 const ecosystem = [];
@@ -142,12 +136,7 @@ ecosystem.forEach(organism => {
     organismsContainer.appendChild(generateOrganismHTML(organism));
 });
 
-
-
-
-
 // ... The Organism class and ecosystem array are as provided above ...
-
 const events = [
     {
         name: "Drought",
@@ -191,6 +180,11 @@ const events = [
                 fox.originalHuntProb = fox.originalHuntProb || fox.huntProb;
                 fox.huntProb *= 1.5; // Increase fox's hunting probability during predator invasion
             }
+            let coyote = ecosystem.find(org => org.name==="Coyote");
+            if(coyote) {
+                coyote.originalHuntProb = coyote.originalHuntProb || coyote.huntProb;
+                coyote.huntProb *= 1.5;
+            }
         },
         endEffect: (ecosystem) => {
             let fox = ecosystem.find(org => org.name === "Fox");
@@ -198,8 +192,13 @@ const events = [
                 fox.huntProb = fox.originalHuntProb;
                 delete fox.originalHuntProb;
             }
+            let coyote = ecosystem.find(org => org.name === "Coyote");
+            if (coyote && coyote.originalHuntProb) {
+                coyote.huntProb = coyote.originalHuntProb;
+                delete coyote.originalHuntProb;
+            }
         },
-        message: "A predator invasion has occurred! An influx of predators can lead to a change in predator-prey dynamics. Predators like foxes may hunt more frequently during this period."
+        message: "A predator invasion has occurred! An influx of predators can lead to a change in predator-prey dynamics. Predators like foxes and coyote may hunt more frequently during this period."
     },
     {
         name: "Bumper Crop",
@@ -226,18 +225,6 @@ let landUsage = 0;
 
 function ecosystemIntroduction() {
     alert("Welcome to the ecosystem simulation! In this virtual environment, we'll observe the interactions between rabbits, foxes, grass, and weeds. Let's see how they co-exist and influence each other's populations.");
-}
-function checkSignificantChange(org, prevCount) {
-    const currentCount = org.count;
-    const percentageChange = Math.abs((currentCount - prevCount) / prevCount);
-
-    if (percentageChange > 0.5 && currentCount < 10) {
-        alert(`${org.name}s are on the verge of extinction! There are only ${currentCount} left.`);
-    } else if (percentageChange > 0.5 && currentCount > prevCount) {
-        alert(`${org.name}s are rapidly increasing in number! Ensure that they don't overconsume their food sources.`);
-    } else if (percentageChange > 0.5 && currentCount < prevCount) {
-        alert(`${org.name}s are rapidly decreasing in number! It might be due to a lack of food or other external factors.`);
-    }
 }
 
 function checkRandomEvent(ecosystem) {
@@ -272,7 +259,7 @@ function changeSeason() {
     // Adjusting reproduction rates based on seasons
     ecosystem.forEach(org => {
         if (org.name === "Grass" || org.name === "Weed") {
-            switch(currentSeason) {
+            switch (currentSeason) {
                 case "Spring":
                     org.matingProb *= 1.2; // Increase by 20% in Spring
                     break;
@@ -301,7 +288,7 @@ function checkSeasonChange() {
 function simulateDay(ecosystem) {
     // Reset land usage every day
     landUsage = ecosystem.reduce((acc, org) => {
-        if (org.name === "Grass" || org.name === "Weed") {
+        if (org.name === "Grass" || org.name === "Weed" || org.name === "Tree" || org.name ==="Shrub" || org.name === "Wildflower") {
             acc += org.count;
         }
         return acc;
@@ -318,17 +305,8 @@ function simulateDay(ecosystem) {
     let shuffledEcosystem = ecosystem.sort(() => Math.random() - 0.5);
     shuffledEcosystem.forEach(org => org.dailyRoutine(ecosystem));
 
-    // Check for significant changes
-    ['Fox', 'Rabbit'].forEach(animal => {
-        const org = ecosystem.find(o => o.name === animal);
-        if (org) {
-            checkSignificantChange(org, prevCounts[animal]);
-        }
-    });
-    
     checkSeasonChange();
 }
-
 
 function initializeGraph() {
     const colors = {
@@ -347,9 +325,10 @@ function initializeGraph() {
         Beetle: 'darkorange',
         Grasshopper: 'lightgreen',
         Ant: 'black',
-        Wildflower: 'pink'
+        Wildflower: 'pink',
+        Human: 'lightgreen'
     };
-    
+
 
     const datasets = [];
 
@@ -390,24 +369,70 @@ function updateGraph() {
 }
 
 function checkFoodChainBroken() {
-    if (ecosystem.some(org => org.name === "Grass" && org.count <= 0)) {
-        alert("The grass has gone extinct! Grass is a primary producer and forms the base of the food chain. Its extinction can lead to a collapse of the ecosystem, affecting all other organisms.");
+    const messages = {
+        "Grass": "The grass has gone extinct! Grass is a primary producer and forms the base of the food chain. Without it, herbivores will struggle for food and this can cause a chain reaction affecting the entire ecosystem.",
+        "Rabbit": "Oh no, the rabbits are extinct! They play a vital role in controlling plant populations and serving as prey for many predators. Their absence will ripple through the ecosystem.",
+        "Fox": "Foxes, the cunning predators, are now extinct! This can result in an overpopulation of creatures they hunted.",
+        "Deer": "With the deer gone, we're looking at a potential overgrowth of certain plants they fed on and a scarcity for predators who hunted them.",
+        "Coyote": "The loss of coyotes, versatile predators, means their prey might grow unchecked, disturbing our delicate balance.",
+        "Bobcat": "Without bobcats, their primary prey, rabbits, may become overabundant, leading to vegetation stress.",
+        "Sparrow": "Sparrows have vanished! Insects they controlled might become a problem, and the predators that relied on them will suffer.",
+        "Hawk": "The skies seem emptier without hawks. This could mean bad news for many animals as the balance of prey and predator is skewed.",
+        "Wildflower": "Wildflowers are not just pretty to look at. Their extinction could affect various insects and the animals relying on those insects.",
+        "Shrub": "Shrubs are more than just plants; they are habitat and food for numerous organisms. Their absence will surely be felt.",
+        "Tree": "Our great trees have fallen! This means less shelter and food for many and a great change in our landscape.",
+        "Weed": "Even weeds, often underappreciated, have a role. Their loss might mean certain insects go hungry, affecting those who prey on those insects.",
+        "Butterfly": "The delicate butterflies are gone! They played a role in pollination and were food for many; their loss will be noticed.",
+        "Beetle": "No more beetles? This might lead to an overgrowth of plants they consumed and a lack of food for those who ate them.",
+        "Grasshopper": "Grasshoppers, a key food source for many, are now extinct. Birds and other predators will definitely feel their absence.",
+        "Ant": "Ants, the tiny engineers of our world, are no more. This could affect soil health and the creatures relying on them for food.",
+        "Human": "Humans have vanished! While many ecosystems were significantly impacted by human activities, nature has a way of adapting and evolving. The absence of humans could lead to various changes, some of which might be recovery and rebalancing of certain ecosystems."    };
+
+    const herbivores = ["Rabbit", "Deer", "Grasshopper"];
+    if (herbivores.every(herb => ecosystem.some(org => org.name === herb && org.count <= 0))) {
+        alert("Several herbivores are now extinct, which might lead to an overgrowth of plants. This could result in potential ecological imbalances.");
         return true;
     }
-    
-    if (ecosystem.some(org => org.name === "Rabbit" && org.count <= 0)) {
-        alert("Rabbits have gone extinct! As primary consumers, rabbits are crucial for controlling plant populations and serving as prey for predators. Their extinction will have cascading effects on the ecosystem.");
+
+    // Check for Predator Overpopulation
+    const apexPredators = ["Hawk", "Bobcat", "Coyote"];
+    if (apexPredators.every(predator => ecosystem.some(org => org.name === predator && org.count <= 0))) {
+        alert("With the absence of apex predators, the animals they hunted might grow in numbers unchecked, leading to imbalances.");
         return true;
     }
-    
+
+    // Check for Pollination Crisis
+    const pollinators = ["Butterfly", "Beetle"];
+    if (pollinators.every(pollinator => ecosystem.some(org => org.name === pollinator && org.count <= 0))) {
+        alert("We're facing a potential pollination crisis with the extinction of key pollinators. This could threaten the reproduction of many plants.");
+        return true;
+    }
+
+    // Check for Scarcity of Prey
+    const primaryConsumers = ["Rabbit", "Grasshopper", "Sparrow"];
+    if (primaryConsumers.every(consumer => ecosystem.some(org => org.name === consumer && org.count <= 0))) {
+        alert("With many primary consumers gone, the predators will face a scarcity of prey. This might starve out many carnivores.");
+        return true;
+    }
+
+    // Individual checks
+    for (let organism of ecosystem) {
+        if (organism.count <= 0 && messages[organism.name]) {
+            alert(messages[organism.name]);
+            if(organism.name === "Human"){
+                return false;
+            }
+            return true;
+        }
+    }
+
+    // Check if almost every animal species is gone
     if (ecosystem.every(org => (org.name !== "Grass" && org.name !== "Weed") && org.count <= 0)) {
-        alert("All animals have died! Without animals, plants might overgrow without check, leading to potential ecological imbalances. The balance between flora and fauna is crucial for a stable ecosystem.");
+        alert("It's a ghost town here! Almost every animal species has gone extinct. With only a few plants left, the ecosystem is on the brink of collapse.");
         return true;
     }
-    
     return false;
 }
-
 
 
 function runSimulationDayByDay() {
@@ -428,12 +453,11 @@ function runSimulationDayByDay() {
     }
 }
 
-
 initializeGraph();
 updateUI();
 updateGraph
 ecosystemIntroduction();
 
-document.getElementById("startSimulation").addEventListener("click", function() {
+document.getElementById("startSimulation").addEventListener("click", function () {
     runSimulationDayByDay();
 });
