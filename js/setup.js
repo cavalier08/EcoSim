@@ -1,3 +1,4 @@
+console.log("loading");
 document.addEventListener('DOMContentLoaded', function () {
     const numberForm = document.getElementById('numberForm');
 
