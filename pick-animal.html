@@ -2,11 +2,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Main Simulation</title>
-    <link href="css/fullgame.css" rel="stylesheet">
-    <link href="css/pick-animal.css" rel="stylesheet">
+    <link href="fullgame.css" rel="stylesheet">
+    <link href="pick-animal.css" rel="stylesheet">
+    <link href="hover.css" rel=""stylesheet>
 </head>
 <body>
-<img class="img" src="images/rain.jpg">
+<img class="img" src="rain.jpg">
 
 
 <div class="navbar">
@@ -40,22 +41,26 @@
 
 <div class="gallery">
     <div class="animal">
-        <img src="images/organisms/bee.png" id="img1" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
-        <div class="about-animal">
+        <img src="bee.png" id="img1" alt="animal" onmouseover="increaseImage(id,'des1','count1')" onmouseout="decreaseImage(id,'des1', 'count1')">
+        <div class="animalDes" id="des1">
+            description text here.
+        </div>
+        <div class="about-animal" id="count1">
             <h4>Ant</h4>
             <div class="input-group">
                 <label for="antCount">Number of Ants:</label>
                 <input type="number" id="antCount" name="antCount" min="0" value="15">
             </div>
-
         </div>
-
     </div>
 
 
     <div class="animal">
-        <img src="images/organisms/bee.png" id="img2" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
-        <div class="about-animal">
+        <img src="bee.png" id="img2" alt="animal" onmouseover="increaseImage(id,'des2','count2')" onmouseout="decreaseImage(id,'des2','count2')">
+        <div class="animalDes" id="des2">
+            description text here.
+        </div>
+        <div class="about-animal" id="count2">
             <h4>Bee</h4>
             <div class="input-group">
                 <label for="beetleCount">Number of Beetles:</label>
@@ -66,8 +71,11 @@
     </div>
 
     <div class="animal">
-        <img src="images/Pokémon_Pikachu_art.png" id="img3" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
-        <div class="about-animal">
+        <img src="Pokémon_Pikachu_art.png" id="img3" alt="animal" onmouseover="increaseImage(id,'des3','count3')" onmouseout="decreaseImage(id,'des3','count3')">
+        <div class="animalDes" id="des3">
+            description text here.
+        </div>
+        <div class="about-animal" id="count3">
             <h4>Bobcat</h4>
             <div class="input-group">
                 <label for="bobcatCount">Number of Bobcats:</label>
@@ -78,8 +86,11 @@
     </div>
 
     <div class="animal">
-        <img src="images/organisms/butterfly.png" id="img4" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
-        <div class="about-animal">
+        <img src="butterfly.png" id="img4" alt="animal" onmouseover="increaseImage(id,'des4','count4')" onmouseout="decreaseImage(id,'des4','count4')">
+        <div class="animalDes" id="des4">
+            description text here.
+        </div>
+        <div class="about-animal" id="count4">
             <h4>Butterfly</h4>
             <div class="input-group">
                 <label for="butterflyCount">Number of Butterflies:</label>
@@ -90,8 +101,11 @@
     </div>
 
     <div class="animal">
-        <img src="images/organisms/coyote.png" id="coyote" id="img5" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
-        <div class="about-animal" >
+        <img src="coyote.png" id="coyote" id="img5" alt="animal" onmouseover="increaseImage(id,'des5','count5')" onmouseout="decreaseImage(id,'des5','count5')">
+        <div class="animalDes" id="des5">
+            description text here.
+        </div>
+        <div class="about-animal" id="count5">
             <h4>Coyote</h4>
             <div class="input-group">
                 <label for="coyoteCount">Number of Coyotes:</label>
@@ -103,8 +117,11 @@
     </div>
 
     <div class="animal">
-        <img src="images/organisms/deer.png" id="img6" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
-        <div class="about-animal">
+        <img src="deer.png" id="img6" alt="animal" onmouseover="increaseImage(id,'des6','count6')" onmouseout="decreaseImage(id,'des6','count6')">
+        <div class="animalDes" id="des6">
+            description text here.
+        </div>
+        <div class="about-animal" id="count6">
             <h4>Deer</h4>
             <div class="input-group">
                 <label for="deerCount">Number of Deer:</label>
@@ -115,8 +132,11 @@
     </div>
 
     <div class="animal">
-        <img src="images/Pokémon_Pikachu_art.png" id="img7" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
-        <div class="about-animal">
+        <img src="Pokémon_Pikachu_art.png" id="img7" alt="animal" onmouseover="increaseImage(id,'des7','count7')" onmouseout="decreaseImage(id,'des7','count7')">
+        <div class="animalDes" id="des7">
+            description text here.
+        </div>
+        <div class="about-animal" id="count7">
             <h4>Grass</h4>
             <div class="input-group">
                 <label for="grassCount">Number of Grass:</label>
@@ -129,8 +149,11 @@
 
 
     <div class="animal">
-        <img src="images/Pokémon_Pikachu_art.png" id="img8" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
-        <div class="about-animal">
+        <img src="Pokémon_Pikachu_art.png" id="img8" alt="animal" onmouseover="increaseImage(id,'des8','count8')" onmouseout="decreaseImage(id,'des8','count8')">
+        <div class="animalDes" id="des8">
+            description text here.
+        </div>
+        <div class="about-animal" id="count8">
             <h4>Grasshopper</h4>
             <div class="input-group">
                 <label for="grasshopperCount">Number of Grasshoppers:</label>
@@ -142,8 +165,11 @@
     </div>
 
     <div class="animal">
-        <img src="images/organisms/fox.png" id="img9" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
-        <div class="about-animal">
+        <img src="fox.png" id="img9" alt="animal" onmouseover="increaseImage(id,'des9','count9')" onmouseout="decreaseImage(id,'des9','count9')">
+        <div class="animalDes" id="des9">
+            description text here.
+        </div>
+        <div class="about-animal" id="count9">
             <h4>Fox</h4>
             <div class="input-group">
                 <label for="foxCount">Number of Foxes:</label>
@@ -156,8 +182,11 @@
 
 
     <div class="animal">
-        <img src="images/organisms/hawk.png" id="img10" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
-        <div class="about-animal">
+        <img src="hawk.png" id="img10" alt="animal" onmouseover="increaseImage(id,'des10','count10')" onmouseout="decreaseImage(id,'des10','count10')">
+        <div class="animalDes" id="des10">
+            description text here.
+        </div>
+        <div class="about-animal" id="count10">
             <h4>Hawk</h4>
             <div class="input-group">
                 <label for="hawkCount">Number of Hawks:</label>
@@ -169,8 +198,11 @@
     </div>
 
     <div class="animal">
-        <img src="images/organisms/rabbit.png" id="img11" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
-        <div class="about-animal">
+        <img src="rabbit.png" id="img11" alt="animal" onmouseover="increaseImage(id,'des11','count11')" onmouseout="decreaseImage(id,'des11','count11')">
+        <div class="animalDes" id="des11">
+            description text here.
+        </div>
+        <div class="about-animal" id="count11">
             <h4>Rabbit</h4>
             <div class="input-group">
                 <label for="rabbitCount">Number of Rabbits:</label>
@@ -181,8 +213,11 @@
     </div>
 
     <div class="animal">
-        <img src="images/organisms/sparrow.png" id="img12" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
-        <div class="about-animal">
+        <img src="sparrow.png" id="img12" alt="animal" onmouseover="increaseImage(id,'des12','count12')" onmouseout="decreaseImage(id,'des12','count12')">
+        <div class="animalDes" id="des12">
+            description text here.
+        </div>
+        <div class="about-animal" id="count12">
             <h4>Sparrow</h4>
             <div class="input-group">
                 <label for="sparrowCount">Number of Sparrows:</label>
@@ -193,8 +228,11 @@
     </div>
 
     <div class="animal">
-        <img src="images/Pokémon_Pikachu_art.png" id="img13" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
-        <div class="about-animal">
+        <img src="Pokémon_Pikachu_art.png" id="img13" alt="animal" onmouseover="increaseImage(id,'des13','count13')" onmouseout="decreaseImage(id,'des13','count13')">
+        <div class="animalDes" id="des13">
+            description text here.
+        </div>
+        <div class="about-animal" id="count13">
             <h4>Shrub</h4>
             <div class="input-group">
                 <label for="shrubCount">Number of Shrubs:</label>
@@ -206,8 +244,11 @@
     </div>
 
     <div class="animal">
-        <img src="images/organisms/tree.png" id="img14" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
-        <div class="about-animal">
+        <img src="tree.png" id="img14" alt="animal" onmouseover="increaseImage(id,'des14','count14')" onmouseout="decreaseImage(id,'des14','count14')">
+        <div class="animalDes" id="des14">
+            description text here.
+        </div>
+        <div class="about-animal" id="count14">
             <h4>Tree</h4>
             <div class="input-group">
                 <label for="treeCount">Number of Trees:</label>
@@ -218,12 +259,12 @@
 
     </div>
 
-
-
-
     <div class="animal">
-        <img src="images/organisms/weed.png" id="img15" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
-        <div class="about-animal">
+        <img src="weed.png" id="img15" alt="animal" onmouseover="increaseImage(id,'des15','count15')" onmouseout="decreaseImage(id,'des15','count15')">
+        <div class="animalDes" id="des15">
+            description text here.
+        </div>
+        <div class="about-animal" id="count15">
             <h4>Weed</h4>
             <div class="input-group">
                 <label for="weedCount">Number of Weeds:</label>
@@ -235,8 +276,11 @@
     </div>
 
     <div class="animal">
-        <img src="images/organisms/wildflower.png" id="16" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
-        <div class="about-animal">
+        <img src="wildflower.png" id="16" alt="animal" onmouseover="increaseImage(id,'des16','count16')" onmouseout="decreaseImage(id,'des16','count16')">
+        <div class="animalDes" id="des16">
+            description text here.
+        </div>
+        <div class="about-animal" id="count16">
             <h4>Wildflower</h4>
             <div class="input-group">
                 <label for="wildflowerCount">Number of Wildflowers:</label>
@@ -246,10 +290,6 @@
         </div>
 
     </div>
-
-
-
-
 </div>
 
 <div class="spacer">
@@ -266,8 +306,8 @@
 <div class="spacer">
 
 </div>
-<script src="js/setup.js"></script>
-<script src="js/zoom.js"></script>
+<script src="setup.js"></script>
+<script src="zoom.js"></script>
 </body>
 
 </html>
