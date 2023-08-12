@@ -16,7 +16,6 @@
 <body>
     <form id="numberForm">
         <h2>Ecosystem Simulation Setup</h2>
-
         <!-- Input fields for each species -->
         <div class="input-group">
             <label for="rabbitCount">Number of Rabbits:</label>
@@ -83,8 +82,12 @@
             <label for="antCount">Number of Ants:</label>
             <input type="number" id="antCount" name="antCount" min="0" value="15">
         </div>
+        <div class="input-group">
+            <label for="humanCount">Number of Human:</label>
+            <input type="number" id="humanCount" name="humanCount" min="0" value="15">
+        </div>
         <div>
-            <button type = "submit">Submit</button>
+            <button type="submit">Submit</button>
         </div>
     </form>
     <script src="js/setup.js"></script>
