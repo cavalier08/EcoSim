@@ -405,7 +405,7 @@ function updateUI() {
 }
 
 function updateGraph() {
-  chart.data.labels.push("Month "+dayCount);
+  chart.data.labels.push(dayCount);
 
   for (let i = 0; i < chart.data.datasets.length; i++) {
     const organismName = chart.data.datasets[i].label;
