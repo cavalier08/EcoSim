@@ -1,0 +1,104 @@
+body {
+    margin: 1px;
+
+}
+
+:root {
+    --darkpurple: #2b183d;
+    --verydarkpurple: #13031c;
+    --purple: #5d3485;
+    --darkblue: #211d4f;
+    --verydarkblue: #161a26;
+    --bluegrey: #2b3142;
+    --white: #e8e7e6;
+    --offwhite: #e0e0e0;
+    --darkred: #ab231a;
+    --darkpink: #29041b;
+    --red: #de5454;
+    --yellow: #e8ca5f;
+    --blue: #5492de;
+    --black: #171717;
+    --grey: #bababa;
+    --pink: #de92d3;
+    --lightteal: #8fccb5;
+    --lilac: #a177c7;
+}
+
+.spacer {
+    height: 60px;
+}
+
+.big-spacer {
+    height: 100px;
+    width: 100%;
+}
+
+.x-spacer {
+    width: 10px;
+}
+
+
+h1, h2, h3, h4, p, a, ul, li {
+    font-family: 'gill sans';
+}
+
+p {
+    color: var(--white);
+}
+
+button {
+    width: 95px;
+    height: 40px;
+    text-decoration: none;
+    color: var(--darkpurple);
+    border-radius: 15px;
+    border: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: var(--lilac);
+    box-shadow: 4px 4px var(--white);
+}
+
+
+.navbar {
+    background-color: var(--verydarkblue);
+    position: sticky;
+    top: 0;
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 2.5%;
+    padding-top: 30px;
+    margin: auto;
+    z-index: 1
+}
+
+
+.main-page-button {
+    background-color: var(--pink);
+}
+
+.play-button {
+    background-color: var(--red);
+}
+
+.rules-button {
+    background-color: var(--yellow);
+}
+
+.exit-button {
+    background-color: var(--blue);
+}
+
+.img {
+    height: 240%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    opacity: 0.3;
+    overflow: scroll;
+}
