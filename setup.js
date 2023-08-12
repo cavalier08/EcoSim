@@ -39,7 +39,7 @@ sessionStorage.setItem('BeetleCount', beetleCount);
 sessionStorage.setItem('GrasshopperCount', grasshopperCount);
 sessionStorage.setItem('AntCount', antCount);
 
-window.location.href = 'simulation.html';
+window.location.href = 'app.html';
     });
 });
 
