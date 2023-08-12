@@ -280,7 +280,7 @@ function changeSeason() {
 }
 
 function checkSeasonChange() {
-    if (dayCount % 6 === 0) {
+    if (dayCount % 3 === 0) {
         changeSeason();
     }
 }
@@ -447,9 +447,9 @@ function runSimulationDayByDay() {
         updateUI();
         updateGraph();
 
-        setTimeout(runSimulationDayByDay, 200);
+        setTimeout(runSimulationDayByDay, 1000);
     } else {
-        alert(`The food chain is broken on day ${dayCount}!`);
+        alert(`The food chain is broken on month ${dayCount}!`);
     }
 }
 
