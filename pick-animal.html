@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Simulation</title>
+    <link href="css/fullgame.css" rel="stylesheet">
+    <link href="css/pick-animal.css" rel="stylesheet">
+</head>
+<body>
+<img class="img" src="images/rain.jpg">
+
+
+<div class="navbar">
+
+    <a href="index.html">
+        <button class="main-page-button" >
+            main page
+        </button>
+    </a>
+    <a href="rules.html">
+        <button class="rules-button" >
+            rules
+        </button>
+    </a>
+    <a href="exit.html">
+        <button class="exit-button" >
+            exit
+        </button>
+    </a>
+</div>
+
+
+<div class="spacer">
+
+</div>
+
+<div class="instructions">
+    <h3>Pick which organisms you want for your sim!</h3>
+</div>
+<form id="numberForm">
+
+<div class="gallery">
+    <div class="animal">
+        <img src="images/organisms/bee.png" id="img1" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
+        <div class="about-animal">
+            <h4>Ant</h4>
+            <div class="input-group">
+                <label for="antCount">Number of Ants:</label>
+                <input type="number" id="antCount" name="antCount" min="0" value="15">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="animal">
+        <img src="images/organisms/bee.png" id="img2" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
+        <div class="about-animal">
+            <h4>Bee</h4>
+            <div class="input-group">
+                <label for="beetleCount">Number of Beetles:</label>
+                <input type="number" id="beetleCount" name="beetleCount" min="0" value="10">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="animal">
+        <img src="images/Pokémon_Pikachu_art.png" id="img3" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
+        <div class="about-animal">
+            <h4>Bobcat</h4>
+            <div class="input-group">
+                <label for="bobcatCount">Number of Bobcats:</label>
+                <input type="number" id="bobcatCount" name="bobcatCount" min="0" value="3">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="animal">
+        <img src="images/organisms/butterfly.png" id="img4" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
+        <div class="about-animal">
+            <h4>Butterfly</h4>
+            <div class="input-group">
+                <label for="butterflyCount">Number of Butterflies:</label>
+                <input type="number" id="butterflyCount" name="butterflyCount" min="0" value="5">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="animal">
+        <img src="images/organisms/coyote.png" id="coyote" id="img5" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
+        <div class="about-animal" >
+            <h4>Coyote</h4>
+            <div class="input-group">
+                <label for="coyoteCount">Number of Coyotes:</label>
+                <input type="number" id="coyoteCount" name="coyoteCount" min="0" value="2">
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="animal">
+        <img src="images/organisms/deer.png" id="img6" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
+        <div class="about-animal">
+            <h4>Deer</h4>
+            <div class="input-group">
+                <label for="deerCount">Number of Deer:</label>
+                <input type="number" id="deerCount" name="deerCount" min="0" value="8">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="animal">
+        <img src="images/Pokémon_Pikachu_art.png" id="img7" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
+        <div class="about-animal">
+            <h4>Grass</h4>
+            <div class="input-group">
+                <label for="grassCount">Number of Grass:</label>
+                <input type="number" id="grassCount" name="grassCount" min="0" value="100">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="animal">
+        <img src="images/Pokémon_Pikachu_art.png" id="img8" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
+        <div class="about-animal">
+            <h4>Grasshopper</h4>
+            <div class="input-group">
+                <label for="grasshopperCount">Number of Grasshoppers:</label>
+                <input type="number" id="grasshopperCount" name="grasshopperCount" min="0" value="20">
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="animal">
+        <img src="images/organisms/fox.png" id="img9" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
+        <div class="about-animal">
+            <h4>Fox</h4>
+            <div class="input-group">
+                <label for="foxCount">Number of Foxes:</label>
+                <input type="number" id="foxCount" name="foxCount" min="0" value="5">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="animal">
+        <img src="images/organisms/hawk.png" id="img10" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
+        <div class="about-animal">
+            <h4>Hawk</h4>
+            <div class="input-group">
+                <label for="hawkCount">Number of Hawks:</label>
+                <input type="number" id="hawkCount" name="hawkCount" min="0" value="5">
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="animal">
+        <img src="images/organisms/rabbit.png" id="img11" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
+        <div class="about-animal">
+            <h4>Rabbit</h4>
+            <div class="input-group">
+                <label for="rabbitCount">Number of Rabbits:</label>
+                <input type="number" id="rabbitCount" name="rabbitCount" min="0" value="10">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="animal">
+        <img src="images/organisms/sparrow.png" id="img12" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
+        <div class="about-animal">
+            <h4>Sparrow</h4>
+            <div class="input-group">
+                <label for="sparrowCount">Number of Sparrows:</label>
+                <input type="number" id="sparrowCount" name="sparrowCount" min="0" value="15">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="animal">
+        <img src="images/Pokémon_Pikachu_art.png" id="img13" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
+        <div class="about-animal">
+            <h4>Shrub</h4>
+            <div class="input-group">
+                <label for="shrubCount">Number of Shrubs:</label>
+                <input type="number" id="shrubCount" name="shrubCount" min="0" value="30">
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="animal">
+        <img src="images/organisms/tree.png" id="img14" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
+        <div class="about-animal">
+            <h4>Tree</h4>
+            <div class="input-group">
+                <label for="treeCount">Number of Trees:</label>
+                <input type="number" id="treeCount" name="treeCount" min="0" value="20">
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <div class="animal">
+        <img src="images/organisms/weed.png" id="img15" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
+        <div class="about-animal">
+            <h4>Weed</h4>
+            <div class="input-group">
+                <label for="weedCount">Number of Weeds:</label>
+                <input type="number" id="weedCount" name="weedCount" min="0" value="150">
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="animal">
+        <img src="images/organisms/wildflower.png" id="16" alt="animal" onmouseover="increaseImage(id)" onmouseout="decreaseImage(id)">
+        <div class="about-animal">
+            <h4>Wildflower</h4>
+            <div class="input-group">
+                <label for="wildflowerCount">Number of Wildflowers:</label>
+                <input type="number" id="wildflowerCount" name="wildflowerCount" min="0" value="50">
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+<div class="spacer">
+
+</div>
+
+<div class="compile">
+    <button type="submit">
+        submit
+    </button>
+</div>
+</form>
+
+<div class="spacer">
+
+</div>
+<script src="js/setup.js"></script>
+
+</body>
+
+</html>
