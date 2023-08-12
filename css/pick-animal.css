@@ -37,13 +37,6 @@ body {
 
 }
 
-.animalDes{
-    display: none;
-    color: var(--offwhite);
-    font-size: 16px;
-    margin-top: 5px;
-}
-
 .animal img {
    
     height: 150px;
