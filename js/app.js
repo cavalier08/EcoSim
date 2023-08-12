@@ -181,6 +181,42 @@ const events = [
             alert("The disease outbreak has ended.");
         },
         message: "A disease outbreak has occurred! Diseases can drastically reduce the population of affected species."
+    },
+    {
+        name: "Predator Invasion",
+        duration: 4,
+        effect: (ecosystem) => {
+            let fox = ecosystem.find(org => org.name === "Fox");
+            if (fox) {
+                fox.originalHuntProb = fox.originalHuntProb || fox.huntProb;
+                fox.huntProb *= 1.5; // Increase fox's hunting probability during predator invasion
+            }
+        },
+        endEffect: (ecosystem) => {
+            let fox = ecosystem.find(org => org.name === "Fox");
+            if (fox && fox.originalHuntProb) {
+                fox.huntProb = fox.originalHuntProb;
+                delete fox.originalHuntProb;
+            }
+        },
+        message: "A predator invasion has occurred! An influx of predators can lead to a change in predator-prey dynamics. Predators like foxes may hunt more frequently during this period."
+    },
+    {
+        name: "Bumper Crop",
+        duration: 2,
+        effect: (ecosystem) => {
+            let grass = ecosystem.find(org => org.name === "Grass");
+            if (grass) {
+                grass.foodAvailable *= 2; // Double the available food for herbivores
+            }
+        },
+        endEffect: (ecosystem) => {
+            let grass = ecosystem.find(org => org.name === "Grass");
+            if (grass) {
+                grass.foodAvailable /= 2; // Restore the original food availability
+            }
+        },
+        message: "A bumper crop has occurred! This event leads to an abundance of plants like grass, providing more food for herbivores. Herbivore populations may thrive during this period."
     }
 ];
 
