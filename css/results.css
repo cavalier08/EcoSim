@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--verydarkblue);
+
+}
+
+
+.heading h2 {
+    color: var(--white);
+    font-size: 50px;
+    font-weight: normal;
+}
+
+.heading {
+    text-align: center;
+}
+
+#organismsContainer {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 1000px;
+    padding-left: 20px;
+}
+.organism {
+    width: 130px;
+    background-color: var(--bluegrey);
+    border: 0;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.organism h3 {
+    color: var(--white);
+    font-weight: normal;
+    margin: 0;
+
+}
+
+
+.organism p {
+    color: var(--grey);
+    margin: 0;
+    margin-top: 10px;
+
+}
+
+#startSimulation {
+    background-color: var(--red);
+    margin: auto;
+    width: 120px;
+    display: block;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#populationChart {
+    width: 400px;
+}
+
+canvas {
+    width: 80%;
+    margin: auto;
+}

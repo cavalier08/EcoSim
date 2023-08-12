@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--verydarkblue);
+    background-image: linear-gradient(to bottom, var(--verydarkblue), var(--verydarkpurple), var(--verydarkblue));
+}
+
+.rules-container {
+    width: 70%;
+    margin: auto;
+    padding: 20px;
+    background-color: var(--verydarkblue);
+    opacity: 0.9;
+    border-radius: 30px;
+    padding-top: 50px;
+    animation: 0.7s ease-out 0s 1 slideInBottom;
+
+}
+
+.rules-container h3{
+    color: var(--white);
+    text-align: center;
+    font-size: 50px;
+    margin-top: 0px;
+}
+
+.rules {
+    margin-top: 30px;
+}
+
+.rules-container ul {
+    color: var(--white);
+    font-size: 18px;
+}
+
+li {
+    margin: 10px;
+}

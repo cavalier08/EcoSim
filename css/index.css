@@ -1,0 +1,85 @@
+body {
+    overflow: hidden;
+    background-color: var(--verydarkblue);
+    background-image: linear-gradient(to bottom, var(--verydarkblue), var(--verydarkpurple), var(--verydarkblue));
+
+
+
+}
+
+
+.title {
+    animation: 0.7s ease-out 0s 1 slideInTop;
+}
+
+.title {
+    margin: auto;
+    text-align: center;
+    width: 700px;
+    height: 370px;
+    padding-top: 70px;
+    border: 5px solid var(--white);
+    border-radius: 50px;
+    background-color: var(--verydarkpurple);
+    opacity: 0.9;
+}
+
+.title h1 {
+    color: var(--white);
+    font-size: 60px;
+    text-transform: uppercase;
+    margin: 0;
+    text-shadow: 5px 5px var(--lilac);
+    opacity: 1.1;
+}
+
+.prompt {
+    color: var(--lightteal);
+    margin-top: 0;
+    animation: rotate 2s linear 0s infinite alternate
+}
+
+#progress {
+    width: 1px;
+    height: 10px;
+    margin: 0%;
+    background-color: var(--darkred);
+
+
+}
+
+#bar {
+    width: 500px;
+    height: 10px;
+    margin: auto;
+    background-color: grey;
+    border: 2px solid var(--white);
+    border-radius: 3px;
+}
+
+.menu-container {
+    margin-top: 50px;
+    justify-content: space-between;
+    height: 80px;
+    display: flex;
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+.flower {
+    justify-content: space-between;
+    height: 200px;
+    opacity: 0.6;
+    animation: 0.7s ease-out 0s 1 slideInBottom;
+    z-index: -1;
+
+}
+
+.attribution {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 10px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
