@@ -67,6 +67,7 @@ body {
 }
 
 .flower {
+    justify-content: space-between;
     position: float;
     height: 200px;
     opacity: 0.6;
