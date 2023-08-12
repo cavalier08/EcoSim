@@ -68,12 +68,81 @@ class Organism {
 
 const MAX_LAND_CAPACITY = 5000;
 
-const ecosystem = [
-    new Organism("Rabbit", 50, 0.45, 100, 200, 1, 0.5, ["Grass", "Weed"], 1),
-    new Organism("Fox", 10, 0.35, 10, 50, 3, 0.4, ["Rabbit"], 30),
-    new Organism("Grass", 1200, 0, 0, 4000, 0.2, 0.6, [], 0),
-    new Organism("Weed", 500, 0, 0, 1000, 0.2, 0.65, [], 0)
+
+function generateOrganismHTML(organism) {
+    const div = document.createElement('div');
+    div.classList.add('organism');
+    div.id = organism.name;
+    
+    const h3 = document.createElement('h3');
+    h3.innerText = organism.name;
+    div.appendChild(h3);
+    
+    const p = document.createElement('p');
+    p.innerHTML = `Count: <span id="${organism.name}-count">${organism.count}</span>`;
+    div.appendChild(p);
+
+    return div;
+}
+
+const organismsData = [
+    { name: "Rabbit", args: [0.45, 100, 200, 1, 0.5, ["Grass", "Weed"], 1] },
+    { name: "Fox", args: [0.35, 10, 50, 3, 0.4, ["Rabbit"], 30] },
+    { name: "Deer", args: [0.4, 120, 250, 2, 0.6, ["Grass"], 2] },
+    { name: "Coyote", args: [0.3, 15, 30, 2.5, 0.3, ["Rabbit", "Deer"], 20] },
+    { name: "Bobcat", args: [0.25, 12, 30, 2.2, 0.35, ["Rabbit"], 25] },
+
+    { name: "Sparrow", args: [0.25, 10, 50, 0.5, 0.6, ["Grasshopper", "Wildflower"], 1] },
+    { name: "Hawk", args: [0.35, 5, 20, 1.5, 0.3, ["Sparrow", "Rabbit"], 10] },
+
+    { name: "Grass", args: [0, 0, 4000, 0.2, 0.6, [], 0] },
+    { name: "Wildflower", args: [0, 0, 150, 0.15, 0.8, [], 0] },
+    { name: "Shrub", args: [0, 0, 300, 0.3, 0.4, [], 0] },
+    { name: "Tree", args: [0, 0, 1000, 1.5, 0.2, [], 0] },
+    { name: "Weed", args: [0, 0, 1000, 0.2, 0.65, [], 0] },
+
+
+    { name: "Butterfly", args: [0.2, 0, 50, 0.05, 0.7, ["Wildflower"], 0] },
+    { name: "Beetle", args: [0.25, 0, 40, 0.08, 0.5, ["Shrub"], 0] },
+    { name: "Grasshopper", args: [0.3, 0, 30, 0.06, 0.6, ["Grass"], 0] },
+    { name: "Ant", args: [0.2, 0, 20, 0.03, 0.6, ["Tree"], 0] },
 ];
+
+const ecosystem = [];
+const history = {};
+
+// Create a temporary array to store initial counts
+const initialCounts = {};
+
+// Read and store initial counts from session storage
+organismsData.forEach(orgData => {
+    const count = sessionStorage.getItem(`${orgData.name}Count`);
+    initialCounts[orgData.name] = isNaN(count) || count < 0 ? 0 : parseInt(count);
+});
+
+// ...
+
+// Modify the getInitialCount function to use the initialCounts array
+function getInitialCount(organismName) {
+    return initialCounts[organismName];
+}
+
+organismsData.forEach(orgData => {
+    const count = getInitialCount(orgData.name);
+    if (count > 0) {
+        ecosystem.push(new Organism(orgData.name, count, ...orgData.args));
+        console.log();
+        history[orgData.name] = []; // Initialize an empty array for the included organism in the history object
+        generateOrganismHTML(orgData);
+    }
+});
+
+const organismsContainer = document.getElementById('organismsContainer');
+ecosystem.forEach(organism => {
+    organismsContainer.appendChild(generateOrganismHTML(organism));
+});
+
+
 
 
 
@@ -156,12 +225,6 @@ function checkRandomEvent(ecosystem) {
 }
 
 let dayCount = 0;
-let history = {
-    Rabbit: [],
-    Fox: [],
-    Grass: [],
-    Weed: []
-};
 let chart;
 let currentSeason = "Spring";
 
@@ -222,39 +285,53 @@ function simulateDay(ecosystem) {
     // Check for significant changes
     ['Fox', 'Rabbit'].forEach(animal => {
         const org = ecosystem.find(o => o.name === animal);
-        checkSignificantChange(org, prevCounts[animal]);
+        if (org) {
+            checkSignificantChange(org, prevCounts[animal]);
+        }
     });
+    
     checkSeasonChange();
 }
 
 
 function initializeGraph() {
+    const colors = {
+        Rabbit: 'blue',
+        Fox: 'red',
+        Grass: 'green',
+        Weed: 'purple',
+        Deer: 'brown',
+        Coyote: 'gray',
+        Bobcat: 'orange',
+        Sparrow: 'lightblue',
+        Hawk: 'darkred',
+        Shrub: 'darkgreen',
+        Tree: 'darkbrown',
+        Butterfly: 'yellow',
+        Beetle: 'darkorange',
+        Grasshopper: 'lightgreen',
+        Ant: 'black',
+        Wildflower: 'pink'
+    };
+    
+
+    const datasets = [];
+
+    for (let organismName in history) {
+        datasets.push({
+            label: organismName,
+            borderColor: colors[organismName],
+            data: [],
+            fill: false
+        });
+    }
+
     const ctx = document.getElementById('populationChart').getContext('2d');
     chart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: [],
-            datasets: [{
-                label: 'Rabbit',
-                borderColor: 'blue',
-                data: [],
-                fill: false
-            }, {
-                label: 'Fox',
-                borderColor: 'red',
-                data: [],
-                fill: false
-            }, {
-                label: 'Grass',
-                borderColor: 'green',
-                data: [],
-                fill: false
-            }, {
-                label: 'Weed',
-                borderColor: 'purple',
-                data: [],
-                fill: false
-            }]
+            datasets: datasets
         }
     });
 }
@@ -267,10 +344,12 @@ function updateUI() {
 
 function updateGraph() {
     chart.data.labels.push(dayCount);
-    chart.data.datasets[0].data.push(history.Rabbit[dayCount - 1]);
-    chart.data.datasets[1].data.push(history.Fox[dayCount - 1]);
-    chart.data.datasets[2].data.push(history.Grass[dayCount - 1]);
-    chart.data.datasets[3].data.push(history.Weed[dayCount - 1]);
+
+    for (let i = 0; i < chart.data.datasets.length; i++) {
+        const organismName = chart.data.datasets[i].label;
+        chart.data.datasets[i].data.push(history[organismName][dayCount - 1]);
+    }
+
     chart.update();
 }
 
@@ -315,5 +394,10 @@ function runSimulationDayByDay() {
 
 
 initializeGraph();
+updateUI();
+updateGraph
 ecosystemIntroduction();
-runSimulationDayByDay();
+
+document.getElementById("startSimulation").addEventListener("click", function() {
+    runSimulationDayByDay();
+});
