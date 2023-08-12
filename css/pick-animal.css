@@ -7,6 +7,7 @@ body {
     overflow-x: hidden;
     background-image: linear-gradient(to bottom, var(--verydarkblue), var(--verydarkpurple), var(--verydarkblue));
 
+
 }
 
 .instructions {
@@ -32,23 +33,18 @@ body {
     padding: 10px 20px;
     background-color: var(--bluegrey);
     opacity: 0.9;
-    animation: 0.7s ease-out 0s 1 fadeInSlideBottom;
+        animation: 0.7s ease-out 0s 1 fadeInSlideBottom;
 
 }
 
+
 .animal img {
-    width:150px;
     height: 150px;
     display: block;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 20px;
 }
-.animalDes{
-    display: none;
-    color: var(--offwhite);
-    font-size: 16px;
-    margin-top: 5px;
-}
+
 .animal h4 {
     color: var(--offwhite);
     margin: 0;
@@ -78,6 +74,7 @@ label {
     width: 75%;
     margin: auto;
 }
+
 
 
 .compile {
