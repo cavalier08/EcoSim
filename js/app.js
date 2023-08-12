@@ -451,7 +451,7 @@ function runSimulationDayByDay() {
 
 initializeGraph();
 updateUI();
-updateGraph
+updateGraph();
 ecosystemIntroduction();
 
 document.getElementById("startSimulation").addEventListener("click", function () {
