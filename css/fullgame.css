@@ -94,3 +94,11 @@ button:hover {
     background-color: var(--blue);
 }
 
+.img {
+    height: 220%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    opacity: 0.3;
+    overflow: scroll;
+}
