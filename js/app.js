@@ -121,7 +121,6 @@ organismsData.forEach(orgData => {
     const count = getInitialCount(orgData.name);
     if (count > 0) {
         ecosystem.push(new Organism(orgData.name, count, ...orgData.args));
-        console.log();
         history[orgData.name] = []; // Initialize an empty array for the included organism in the history object
         generateOrganismHTML(orgData);
     }
@@ -160,10 +159,11 @@ const events = [
             let affectedOrganism = ecosystem[Math.floor(Math.random() * ecosystem.length)];
             const affectedCount = Math.floor(affectedOrganism.count * 0.4);  // 40% gets affected
             affectedOrganism.count -= affectedCount;
-            alert(`Disease has affected the ${affectedOrganism.name}s! ${affectedCount} have died.`);
+            addMessage(`Disease has affected the ${affectedOrganism.name}s! ${affectedCount} have died.`);
+            
         },
         endEffect: (ecosystem) => {
-            alert("The disease outbreak has ended.");
+            addMessage("The disease outbreak has ended.");
         },
         message: "A disease outbreak has occurred! Diseases can drastically reduce the population of affected species."
     },
@@ -220,7 +220,7 @@ let daysRemaining = 0;
 let landUsage = 0;
 
 function ecosystemIntroduction() {
-    alert("Welcome to the ecosystem simulation! In this virtual environment, we'll observe the interactions between rabbits, foxes, grass, and weeds. Let's see how they co-exist and influence each other's populations.");
+    addMessage("Welcome to the ecosystem simulation! In this virtual environment, we'll observe the interactions between rabbits, foxes, grass, and weeds. Let's see how they co-exist and influence each other's populations.");
 }
 
 function checkRandomEvent(ecosystem) {
@@ -235,7 +235,7 @@ function checkRandomEvent(ecosystem) {
         currentEvent = events[Math.floor(Math.random() * events.length)];
         daysRemaining = currentEvent.duration;
         currentEvent.effect(ecosystem);
-        alert(currentEvent.message);
+        addMessage(currentEvent.message);
     }
 
     if (currentEvent) {
@@ -272,7 +272,7 @@ function changeSeason() {
         }
     });
 
-    alert(`Season has changed to ${currentSeason}`);
+    addMessage(`Season has changed to ${currentSeason}`);
 }
 
 function checkSeasonChange() {
@@ -386,35 +386,35 @@ function checkFoodChainBroken() {
 
     const herbivores = ["Rabbit", "Deer", "Grasshopper"];
     if (herbivores.every(herb => ecosystem.some(org => org.name === herb && org.count <= 0))) {
-        alert("Several herbivores are now extinct, which might lead to an overgrowth of plants. This could result in potential ecological imbalances.");
+        addMessage("Several herbivores are now extinct, which might lead to an overgrowth of plants. This could result in potential ecological imbalances.");
         return true;
     }
 
     // Check for Predator Overpopulation
     const apexPredators = ["Hawk", "Bobcat", "Coyote"];
     if (apexPredators.every(predator => ecosystem.some(org => org.name === predator && org.count <= 0))) {
-        alert("With the absence of apex predators, the animals they hunted might grow in numbers unchecked, leading to imbalances.");
+        addMessage("With the absence of apex predators, the animals they hunted might grow in numbers unchecked, leading to imbalances.");
         return true;
     }
 
     // Check for Pollination Crisis
     const pollinators = ["Butterfly", "Beetle"];
     if (pollinators.every(pollinator => ecosystem.some(org => org.name === pollinator && org.count <= 0))) {
-        alert("We're facing a potential pollination crisis with the extinction of key pollinators. This could threaten the reproduction of many plants.");
+        addMessage("We're facing a potential pollination crisis with the extinction of key pollinators. This could threaten the reproduction of many plants.");
         return true;
     }
 
     // Check for Scarcity of Prey
     const primaryConsumers = ["Rabbit", "Grasshopper", "Sparrow"];
     if (primaryConsumers.every(consumer => ecosystem.some(org => org.name === consumer && org.count <= 0))) {
-        alert("With many primary consumers gone, the predators will face a scarcity of prey. This might starve out many carnivores.");
+        addMessage("With many primary consumers gone, the predators will face a scarcity of prey. This might starve out many carnivores.");
         return true;
     }
 
     // Individual checks
     for (let organism of ecosystem) {
         if (organism.count <= 0 && messages[organism.name]) {
-            alert(messages[organism.name]);
+            addMessage(messages[organism.name]);
             if(organism.name === "Human"){
                 return false;
             }
@@ -424,12 +424,17 @@ function checkFoodChainBroken() {
 
     // Check if almost every animal species is gone
     if (ecosystem.every(org => (org.name !== "Grass" && org.name !== "Weed") && org.count <= 0)) {
-        alert("It's a ghost town here! Almost every animal species has gone extinct. With only a few plants left, the ecosystem is on the brink of collapse.");
+        addMessage("It's a ghost town here! Almost every animal species has gone extinct. With only a few plants left, the ecosystem is on the brink of collapse.");
         return true;
     }
     return false;
 }
 
+function addMessage(message) {
+    const textBox = document.getElementById('messageBox');
+    textBox.value += `Month ${dayCount+1}. ${message}\n`;
+    textBox.scrollTop = textBox.scrollHeight; // Scroll to the bottom after adding a new message
+}
 
 function runSimulationDayByDay() {
     if (!checkFoodChainBroken()) {
@@ -445,7 +450,7 @@ function runSimulationDayByDay() {
 
         setTimeout(runSimulationDayByDay, 1000);
     } else {
-        alert(`The food chain is broken on month ${dayCount}!`);
+        addMessage(`The food chain is broken on month ${dayCount+1}!`);
     }
 }
 
