@@ -37,8 +37,14 @@ body {
 
 }
 
-
+.animalDes{
+    display: none;
+    color: var(--offwhite);
+    font-size: 16px;
+    margin-top: 5px;
+}
 .animal img {
+    width:150px;
     height: 150px;
     display: block;
     margin: auto;
