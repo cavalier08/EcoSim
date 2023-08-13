@@ -229,7 +229,7 @@ function checkRandomEvent(ecosystem) {
         currentEvent = null;
     }
 
-    const eventChance = 0.01;
+    const eventChance = 0.05;
 
     if (!currentEvent && Math.random() < eventChance) {
         currentEvent = events[Math.floor(Math.random() * events.length)];
