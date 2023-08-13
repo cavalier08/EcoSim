@@ -346,11 +346,19 @@ function initializeGraph() {
         }
     });
 }
-
+function biodiversityIndex() {
+    let totalCount = 0;
+    ecosystem.forEach((org) => {
+      totalCount += org.count;
+    });
+    return totalCount / ecosystem.length;
+  }
 function updateUI() {
     ecosystem.forEach(org => {
         document.getElementById(`${org.name}-count`).textContent = org.count;
     });
+
+    document.getElementById("bioIndex").textContent=biodiversityIndex();
 }
 
 function updateGraph() {
