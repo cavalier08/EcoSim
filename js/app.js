@@ -470,4 +470,5 @@ ecosystemIntroduction();
 document.getElementById("startSimulation").addEventListener("click", function () {
     document.getElementById("startSimulation").style.visibility='hidden';
     runSimulationDayByDay();
+    addMessage("Go to main page to start again!!!");
 });
