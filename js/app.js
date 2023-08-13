@@ -440,7 +440,7 @@ function checkFoodChainBroken() {
 
 function addMessage(message) {
     const textBox = document.getElementById('messageBox');
-    textBox.value += `Month ${dayCount+1}. ${message}\n`;
+    textBox.value += `Month ${dayCount+1}. ${message}\n\n`;
     textBox.scrollTop = textBox.scrollHeight; // Scroll to the bottom after adding a new message
 }
 
