@@ -4,104 +4,122 @@
 
 body {
     background-color: var(--verydarkblue);
-    background-image: linear-gradient(to bottom, var(--verydarkblue), var(--verydarkpurple), var(--verydarkblue));
-
 
 }
 
-.instructions {
+
+.heading h2 {
+    color: var(--white);
+    font-size: 50px;
+    font-weight: normal;
+}
+
+.heading {
     text-align: center;
-    margin: auto;
 }
 
+#organismsContainer {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 1000px;
+    padding-left: 20px;
+    animation: 0.7s ease-out 0s 1 fadeInSlideBottom;
+}
+.organism {
+    width: 130px;
+    background-color: var(--bluegrey);
+    border: 0;
+    border-radius: 10px;
+    margin: 6px;
+    padding: 10px;
+}
 
-.instructions h3 {
+.organism h3 {
     color: var(--white);
     font-weight: normal;
-    font-size: 40px;
-    animation: 0.7s ease-out 0s 1 fadeIn;
+    margin: 0;
 
 }
-.animal {
-    width: 250px;
-    height: 300px;
-    margin-right: auto;
-    margin-left: auto;
+
+
+.organism p {
+    color: var(--grey);
+    margin: 0;
     margin-top: 10px;
-    border-radius: 30px;
-    padding: 10px 20px;
-    background-color: var(--bluegrey);
-    opacity: 0.9;
-    animation: 0.7s ease-out 0s 1 fadeInSlideBottom;
 
 }
 
-.animalDes {
-    display: none;
-    color: var(--offwhite);
-    font-size: 16px;
-    margin-top: 0px;
-
-}
-
-.animal img {
-    width: 150px;
-    height: 150px;
+#startSimulation {
+    background-color: var(--red);
+    margin: auto;
+    width: 120px;
     display: block;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.input-group {
+    margin-top: 20px;
+    text-align: center;
+    width: 200px;
+    margin: auto;
+
+}
+.chart {
+    width: 70%;
     margin: auto;
     margin-top: 20px;
-    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.animal a {
-    color: var(--offwhite);
-    text-decoration: none;
-    font-size: 20px;
-    margin-bottom: 15px;
-    display: inline-block;
+#populationChart {
+    width: 55%;
+    height: 500px;
+    background-color: var(--verydarkblue);
+
+
 }
 
-.animal a:hover {
+#messageBox {
+    width: 150px;
+    height: 400px;
+    overflow: auto;
+    background-color: var(--verydarkblue);
+    color: var(--grey);
+    font-family: 'gill sans'
+    margin-left: 10px;
+}
+
+canvas {
+    width: 80%;
+    margin: auto;
+
+}
+
+#bioIndex:hover {
     color: var(--lilac);
 }
 
-input {
-    width: 40px;
-    height: 15px;
-    background-color: var(--verydarkblue);
-    border: 0;
-    color: var(--white);
-
-
+.input-group {
+    margin-top: 30px;
+        color: var(--grey);
+        font-family: 'gill sans';
 }
-
-label {
-    color: var(--grey);
-    font-size: 15px;
-}
-
-
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    width: 75%;
-    margin: auto;
-    z-index: 0;
-}
-
-
-
-.compile {
-    width: 95px;
-    margin: auto;
-}
-
-
-.compile button {
+.quiz-button {
     background-color: var(--lightteal);
 }
 
+.input-group a:link {
+    text-decoration: none;
 
-#coyote {
-    height: 150px;
+}
+
+.bioIndex:hover {
+    color: var(--lilac);
+}
+
+.input-group a:hover {
+    color: pink;
 }
