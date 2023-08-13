@@ -24,13 +24,14 @@ body {
     flex-wrap: wrap;
     width: 1000px;
     padding-left: 20px;
+    animation: 0.7s ease-out 0s 1 fadeInSlideBottom;
 }
 .organism {
     width: 130px;
     background-color: var(--bluegrey);
     border: 0;
     border-radius: 10px;
-    margin: 10px;
+    margin: 6px;
     padding: 10px;
 }
 
@@ -58,6 +59,13 @@ body {
     margin-top: 20px;
 }
 
+.input-group {
+    margin-top: 20px;
+    text-align: center;
+    width: 200px;
+    margin: auto;
+
+}
 .chart {
     width: 70%;
     margin: auto;
@@ -81,14 +89,37 @@ body {
     background-color: var(--verydarkblue);
     color: var(--grey);
     font-family: 'gill sans'
+    margin-left: 10px;
 }
 
 canvas {
     width: 80%;
     margin: auto;
+
 }
 
+#bioIndex:hover {
+    color: var(--lilac);
+}
+
+.input-group {
+    margin-top: 30px;
+        color: var(--grey);
+        font-family: 'gill sans';
+}
 .quiz-button {
     background-color: var(--lightteal);
 }
 
+.input-group a:link {
+    text-decoration: none;
+
+}
+
+.bioIndex:hover {
+    color: var(--lilac);
+}
+
+.input-group a:hover {
+    color: pink;
+}
