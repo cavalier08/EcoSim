@@ -37,33 +37,25 @@ body {
 
 }
 
-.animalDes {
+.animalDes{
     display: none;
     color: var(--offwhite);
     font-size: 16px;
-    margin-top: 5px;
-
+    margin-top: 0px;
 }
-
 .animal img {
-    width: 150px;
+    width:150px;
     height: 150px;
     display: block;
     margin: auto;
-    margin-top: 20px;
-    margin-bottom: 30px;
+    margin-top: 10px;
 }
 
-.animal a {
+.animal h4 {
     color: var(--offwhite);
-    text-decoration: none;
-    font-size: 20px;
-    margin-bottom: 15px;
-    display: inline-block;
-}
-
-.animal a:hover {
-    color: var(--lilac);
+    margin: 0;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 input {
