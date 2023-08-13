@@ -87,7 +87,7 @@ body {
     overflow: auto;
     background-color: var(--verydarkblue);
     color: var(--grey);
-    font-family: 'gill sans'
+    font-family: 'gill sans';
     margin-left: 10px;
 }
 
