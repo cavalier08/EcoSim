@@ -58,11 +58,37 @@ body {
     margin-top: 20px;
 }
 
+.chart {
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 #populationChart {
-    width: 400px;
+    width: 55%;
+    height: 500px;
+    background-color: var(--verydarkblue);
+
+
+}
+
+#messageBox {
+    width: 150px;
+    height: 400px;
+    overflow: auto;
+    background-color: var(--verydarkblue);
+    color: var(--grey);
+    font-family: 'gill sans'
 }
 
 canvas {
     width: 80%;
     margin: auto;
 }
+
+.quiz-button {
+    background-color: var(--lightteal);
+}
+
