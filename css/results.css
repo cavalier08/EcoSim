@@ -75,16 +75,15 @@ body {
 }
 
 #populationChart {
-    width: 55%;
-    height: 500px;
+    width: 40%;
     background-color: var(--verydarkblue);
 
 
 }
 
 #messageBox {
-    width: 150px;
-    height: 400px;
+    width: 15%;
+    height: 40vh;
     overflow: auto;
     background-color: var(--verydarkblue);
     color: var(--grey);
