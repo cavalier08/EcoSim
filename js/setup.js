@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
         sessionStorage.setItem('GrasshopperCount', grasshopperCount);
         sessionStorage.setItem('AntCount', antCount);
         sessionStorage.setItem('HumanCount', humanCount);
-        window.location.href = 'app.html';
+        window.location.href = 'results.html';
     });
 });
 
