@@ -459,6 +459,7 @@ function runSimulationDayByDay() {
         setTimeout(runSimulationDayByDay, 1000);
     } else {
         addMessage(`The food chain is broken on month ${dayCount+1}!`);
+        alert(`The food chain is broken on month ${dayCount+1}!`);
     }
 }
 
