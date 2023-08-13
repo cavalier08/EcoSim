@@ -25,6 +25,11 @@
             back
         </button>
     </a>
+    <a href="quiz.html">
+        <button class="quiz-button" >
+            quiz
+        </button>
+    </a>
     <a href="exit.html">
         <button class="exit-button" >
             exit
@@ -35,18 +40,23 @@
 
 
 </div>
-    <main>
-        <div class="heading">
-            <h2>Ecosystem Simulation</h2>
 
-        </div>
-        <button id="startSimulation">Start Simulation</button>
+<main>
+    <div class="heading">
+        <h2>Ecosystem Simulation</h2>
 
-        <!-- Container where organisms will be dynamically added -->
-        <div id="organismsContainer"></div>
-    </main>
+    </div>
+    <button id="startSimulation">Start Simulation</button>
+
+    <!-- Container where organisms will be dynamically added -->
+    <div id="organismsContainer"></div>
+</main>
+<div class="chart">
     <canvas id="populationChart" width="400" height="200"></canvas>
-    <script src="js/app.js"></script>
+    <textarea id="messageBox" readonly></textarea>
+</div>
+
+<script src="js/app.js"></script>
 </body>
 
 <img src="images/rain.jpg" class="img">
