@@ -82,8 +82,8 @@ body {
 }
 
 #messageBox {
-    width: 15%;
-    height: 40vh;
+    width: 20%;
+    height: 45vh;
     overflow: auto;
     background-color: var(--verydarkblue);
     color: var(--grey);
