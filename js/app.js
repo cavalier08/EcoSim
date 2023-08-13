@@ -351,7 +351,7 @@ function biodiversityIndex() {
     ecosystem.forEach((org) => {
       totalCount += org.count;
     });
-    return Math.roudn(totalCount / ecosystem.length);
+    return Math.round(totalCount / ecosystem.length);
   }
 function updateUI() {
     ecosystem.forEach(org => {
