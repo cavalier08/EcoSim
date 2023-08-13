@@ -3,6 +3,11 @@ body {
 
 }
 
+html,
+body {
+  max-height: 140%;
+}
+
 :root {
     --darkpurple: #2b183d;
     --verydarkpurple: #13031c;
@@ -45,6 +50,16 @@ body {
     0% {
           opacity: 0;
           transform: translateY(100%);
+        }
+        100% {
+          opacity: 100%;
+        }
+}
+
+@keyframes fadeInSlideRight {
+    0% {
+          opacity: 0;
+          transform: translateX(50%);
         }
         100% {
           opacity: 100%;
@@ -102,6 +117,10 @@ body {
     height: 40px;
 }
 
+.half-spacer {
+    height: 20px;
+}
+
 .big-spacer {
     height: 100px;
     width: 100%;
@@ -152,7 +171,10 @@ button:hover {
     padding: 20px 15%;
     padding-top: 30px;
     margin: auto;
-    z-index: 1
+    z-index: 1;
+        animation: 0.7s ease-out 0s 1 fadeInSlideTop;
+
+
 }
 
 
