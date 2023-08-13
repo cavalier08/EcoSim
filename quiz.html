@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecosystem and Biodiversity Quiz</title>
+  <link href="css/fullgame.css" rel="stylesheet">
+  <link href="css/quiz.css" rel="stylesheet">
+<style>
+
+</style>
+</head>
+<body>
+
+<div class="navbar">
+
+  <a href="index.html">
+    <button class="main-page-button" >
+      main page
+    </button>
+  </a>
+  <a href="results.html">
+    <button class="rules-button" >
+      back
+    </button>
+  </a>
+  <a href="exit.html">
+    <button class="exit-button" >
+      exit
+    </button>
+  </a>
+</div>
+
+<div id="quiz-container">
+  <h1>Ecosystems and Biodiversity Quiz</h1>
+  <div class="half-spacer">
+
+  </div>
+  <div  id="question"></div>
+  <div  id="options"></div>
+  <button id="next-btn">Next</button>
+</div>
+
+<script>
+const questions = [
+  {
+    question: "What is biodiversity?",
+    options: [
+      "The variety of life in an ecosystem",
+      "The number of humans in an area",
+      "The temperature of an environment",
+      "The size of a habitat"
+    ],
+    answer: 0
+  },
+  {
+    question: "What is an ecosystem?",
+    options: [
+      "A single organism",
+      "A community of interacting organisms",
+      "A laboratory",
+      "A desert"
+    ],
+    answer: 1
+  },
+  {
+    question: "Which of the following is a renewable resource?",
+    options: [
+      "Coal",
+      "Oil",
+      "Natural gas",
+      "Solar energy"
+    ],
+    answer: 3
+  },
+  {
+    question: "What role do predators play in an ecosystem?",
+    options: [
+      "They help control the population of prey species",
+      "They provide food for herbivores",
+      "They help plants grow",
+      "They reduce competition among herbivores"
+    ],
+    answer: 0
+  },
+  {
+    question: "What happens if a keystone species is removed from an ecosystem?",
+    options: [
+      "Nothing changes in the ecosystem",
+      "The ecosystem becomes more stable",
+      "The ecosystem collapses",
+      "The climate becomes more extreme"
+    ],
+    answer: 2
+  },
+  {
+    question: "What is a food chain?",
+    options: [
+      "A list of animals in an ecosystem",
+      "A hierarchy of species in an ecosystem",
+      "The interaction between plants and animals",
+      "The transfer of energy from one organism to another in an ecosystem"
+    ],
+    answer: 3
+  },
+  {
+    question: "In a food chain, what is a producer?",
+    options: [
+      "An organism that hunts and eats other animals",
+      "An organism that feeds on plant material",
+      "An organism that decomposes dead organisms",
+      "An organism that creates its own food"
+    ],
+    answer: 1
+  },
+  {
+    question: "What is a decomposer?",
+    options: [
+      "An animal that preys on other animals",
+      "A plant that produces a lot of energy",
+      "An animal that feeds on plant material",
+      "An organism that breaks down dead organic matter"
+    ],
+    answer: 3
+  },
+  {
+    question: "What happens if there is an overpopulation of herbivores in an ecosystem?",
+    options: [
+      "The predator population increases",
+      "The plants are all consumed, leading to food shortages",
+      "The ecosystem becomes more stable",
+      "The herbivores start to eat predators"
+    ],
+    answer: 1
+  },
+  {
+    question: "Why are apex predators important in an ecosystem?",
+    options: [
+      "They provide a source of food for herbivores",
+      "They are the smallest predators in the ecosystem",
+      "They control the populations of other predators",
+      "They help maintain the balance of the ecosystem by controlling prey populations"
+    ],
+    answer: 3
+  }
+];
+
+let currentQuestion = 0;
+const questionElem = document.getElementById("question");
+const optionsElem = document.getElementById("options");
+const nextBtn = document.getElementById("next-btn");
+
+function loadQuestion() {
+  const question = questions[currentQuestion];
+  questionElem.textContent = question.question;
+  optionsElem.innerHTML = "";
+  
+  question.options.forEach((option, index) => {
+    const optionElem = document.createElement("div");
+    optionElem.classList.add("option");
+    optionElem.textContent = option;
+    optionElem.addEventListener("click", () => checkAnswer(index));
+    optionsElem.appendChild(optionElem);
+  });
+}
+
+let score = 0; // Initialize the score
+
+function checkAnswer(selectedIndex) {
+  const question = questions[currentQuestion];
+  if (selectedIndex === question.answer) {
+    optionsElem.innerHTML = "Correct!";
+    score++; // Increment the score for correct answers
+  } else {
+    optionsElem.innerHTML = "Incorrect. The correct answer was: " + question.options[question.answer];
+  }
+  
+  nextBtn.style.display = "block";
+}
+
+function displayScore() {
+  questionElem.textContent = "Quiz completed!";
+  optionsElem.textContent = "Your score: " + score + " out of " + questions.length;
+  nextBtn.style.display = "none";
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    loadQuestion();
+    nextBtn.style.display = "none";
+  } else {
+    displayScore(); // Display the score instead of "Quiz completed!"
+  }
+}
+
+loadQuestion();
+nextBtn.addEventListener("click", nextQuestion);
+</script>
+</body>
+</html>
